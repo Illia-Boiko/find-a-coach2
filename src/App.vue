@@ -1,30 +1,29 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+<div class="bg-gradient-to-r from-indigo-100 to-pink-100">
+  <TheHeader />
+  <main class="main mx-auto shadow-lg w-3/4 p-8 bg-white">
+    <router-view />
+  </main>
+</div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+// import { mapActions } from 'vuex'
+import TheHeader from './layouts/TheHeader.vue'
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+export default {
+  components: {
+    TheHeader
   }
+
+  // methods: {
+  //   ...mapActions({
+  //     loadRequests: 'loadRequests'
+  //   })
+  // },
+
+  // mounted () {
+  //   this.loadRequests()
+  // }
 }
-</style>
+</script>

@@ -1,19 +1,54 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import AllCoachesPage from '../views/coaches/AllCoachesPage.vue'
+import AuthPage from '../views/AuthPage.vue'
+import RequestsPage from '../views/requests/RequestsPage.vue'
+import NotFoundPage from '../views/NotFoundPage.vue'
+import CoachDetail from '../views/coaches/CoachDetail.vue'
+import CoachContact from '../views/coaches/CoachContact.vue'
+import CoachAddForm from '../views/coaches/CoachAddForm.vue'
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: '/', redirect: '/coaches'
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/coaches',
+    name: 'Coaches',
+    component: AllCoachesPage,
+    children: [
+      {
+        path: 'addnewcoach',
+        name: 'AddCoachForm',
+        component: CoachAddForm
+      }
+    ]
+  },
+  {
+    path: '/coaches/:coachId',
+    name: 'Coach',
+    props: true,
+    component: CoachDetail,
+    children: [
+      {
+        path: 'contact',
+        name: 'Coach',
+        component: CoachContact
+      }
+    ]
+  },
+  {
+    path: '/auth',
+    name: 'Auth',
+    component: AuthPage
+  },
+  {
+    path: '/requests',
+    name: 'Requests',
+    component: RequestsPage
+  },
+  {
+    path: '/:notFound(.*)',
+    component: NotFoundPage
   }
 ]
 

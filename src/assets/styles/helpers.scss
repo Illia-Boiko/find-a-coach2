@@ -1,0 +1,10 @@
+$header-height: 80px;
+
+.header {
+  height: $header-height;
+  background-color: #000;
+}
+
+.main {
+  min-height: calc(100vh - $header-height);
+}
